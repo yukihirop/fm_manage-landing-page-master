@@ -98,6 +98,10 @@ const HeaderMenuMobile = styled.button`
     background-repeat: no-repeat;
     background-position: center;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Header = () => {
@@ -105,7 +109,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <HeaderTitle />
+      <HeaderTitle><a href="#"></a></HeaderTitle>
       <HeaderMenuDesktop />
       <HeaderMenuMobile />
       <HeaderGettingStarted>Get Started</HeaderGettingStarted>

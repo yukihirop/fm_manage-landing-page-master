@@ -59,7 +59,7 @@ const HeroMainButton = styled.button`
 const HeroGraph = styled.div`
   width: 50%;
   height: 400px;
-  background-size: cover;
+  background-size: contain;
   background-image: url("./images/illustration-intro.svg");
   background-position: bottom right;
   background-repeat: no-repeat;
