@@ -1,53 +1,54 @@
 import styled from "@emotion/styled";
+import Header from "components/header";
+import { md } from "styles/media-query";
 
 const Container = styled.main`
-  max-width: 1148px;
+  max-width: 900px;
   min-height: 100vh;
   margin: 0 auto;
-  background-image: url("./images/bg-simplify-section-desktop.svg") top right
-    ${(props) => props.theme.colors.neutral.veryPaleRed};
+  padding: 0 1rem;
+  background: ${props => props.theme.colors.neutral.veryPaleRed};
 `;
 
-const HeaderContainer = styled.div`
+const HeroContainer = styled.section`
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 60px;
-`;
+  width: 100%;
+  min-height: 300px;
+  margin-top: 4rem;
 
-const HeaderTitle = styled.h1`
-  width: 160px;
-  height: 60px;
-  margin: auto 0;
-  background-image: url("./images/logo.svg");
-  background-repeat: no-repeat;
-  background-position-y: center;
-
-  &:hover {
-    cursor: pointer;
+  ${md} {
+    flex-direction: column-reverse;
+    justify-content: center;
+    margin-top: 0;
   }
 `;
+const HeroMain = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 
-const HeaderMenuContainer = styled.nav`
-  ul {
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    padding: 0;
-  }
-
-  li {
-    width: 90px;
-    margin-right: 1rem;
-
-    &:hover {
-      cursor: pointer;
-      color: ${props => props.theme.colors.primary.brightRed};
-    }
+  ${md} {
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
   }
 `;
-
-const HeaderGettingStarted = styled.button`
+const HeroMainTitle = styled.h2`
+  font-size: 2.5rem;
+  font-weight: 400;
+  width: 80%;
+  margin: 1rem 0;
+`;
+const HeroMainDesc = styled.p`
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  width: 70%;
+  margin-bottom: 1.5rem;
+  color: ${(props) => props.theme.colors.neutral.darkGrayishBlue};
+`;
+const HeroMainButton = styled.button`
   width: 120px;
   height: 40px;
   padding: 0.1rem;
@@ -63,22 +64,40 @@ const HeaderGettingStarted = styled.button`
   }
 `;
 
-export default function Home() {
-  const menus = ["Pricing", "Product", "About Us", "Careers", "Community"];
+const HeroGraph = styled.div`
+  width: 50%;
+  height: 400px;
+  background-size: cover;
+  background-image: url("./images/illustration-intro.svg");
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  transform: translateX(10px);
 
+  ${md} {
+    margin: 0 auto;
+    width: 100%;
+    background-size: 80%;
+    background-position: center;
+  }
+`;
+
+export default function Home() {
   return (
     <Container>
-      <HeaderContainer>
-        <HeaderTitle />
-        <HeaderMenuContainer>
-          <ul>
-            {menus.map((menu) => (
-              <li>{menu}</li>
-            ))}
-          </ul>
-        </HeaderMenuContainer>
-        <HeaderGettingStarted>Get Started</HeaderGettingStarted>
-      </HeaderContainer>
+      <Header />
+      <HeroContainer>
+        <HeroMain>
+          <HeroMainTitle>
+            Bring everyone together to build better products.
+          </HeroMainTitle>
+          <HeroMainDesc>
+            Manage makes it simple for software teams to plan day-to-day tasks
+            while keeping the larger team goals in view.
+          </HeroMainDesc>
+          <HeroMainButton>Get Started</HeroMainButton>
+        </HeroMain>
+        <HeroGraph />
+      </HeroContainer>
     </Container>
   );
 }
