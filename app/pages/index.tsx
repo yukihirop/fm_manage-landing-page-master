@@ -12,6 +12,12 @@ const Container = styled.main`
   /* background: ${(props) => props.theme.colors.neutral.veryPaleRed}; */
 `;
 
+const BigBannerContainer = styled.section`
+  width: 100%;
+  height: 100px;
+  background-color: ${(props) => props.theme.colors.neutral.veryPaleRed};
+`;
+
 export default function Home() {
   return (
     <Container>
@@ -19,6 +25,9 @@ export default function Home() {
       <Hero />
       <Article />
       <Recommend />
+      <BigBannerContainer>
+
+      </BigBannerContainer>
     </Container>
   );
 }

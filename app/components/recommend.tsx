@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 import { Recommend as IRecommend } from "interfaces";
 import GetStarted from "./get-started";
 import Slider from "react-slick";
-import useMediaQuery from "use-mediaquery";
+import { useMediaQuery } from "usehooks-ts";
+
 
 const RecommendTitle = styled.h1`
   text-align: center;
