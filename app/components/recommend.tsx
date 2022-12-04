@@ -2,6 +2,8 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Recommend as IRecommend } from "interfaces";
 import GetStarted from "./get-started";
+import Slider from "react-slick";
+import useMediaQuery from "use-mediaquery";
 
 const RecommendTitle = styled.h1`
   text-align: center;
@@ -12,19 +14,8 @@ const RecommendTitle = styled.h1`
 
 const RecommendContainer = styled.section`
   margin-top: 4rem;
-
-  ul {
-    margin-top: 1rem;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  li {
-    width: 32%;
-  }
 `;
+
 const RecommendItem = styled.section`
   height: 200px;
   display: flex;
@@ -34,6 +25,7 @@ const RecommendItem = styled.section`
   padding: 1rem;
   font-size: 0.8rem;
   position: relative;
+  margin: 2rem 0.5rem;
 `;
 const RecommendItemProfile = styled.img`
   width: 60px;
@@ -49,6 +41,14 @@ const RecommendItemDesc = styled.p``;
 const RecommendGetStartedContainer = styled.section`
   display: flex;
   justify-content: center;
+  margin-top: 3rem;
+`;
+
+const RecommendSliderContainer = styled.section`
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0;
+  justify-content: space-between;
 `;
 
 const Recommend = () => {
@@ -68,27 +68,41 @@ const Recommend = () => {
       name: "Richard Watts",
       desc: "Manage allows us to provide structure and process. It keeps us organized and focused. I can’t stop recommending them to everyone I talk to!",
     },
-    // {
-    //   profile: "",
-    //   name: "Shanai Gough",
-    //   desc: "Their software allows us to track, manage and collaborate on our projects from anywhere. It keeps the whole team in-sync without being intrusive.",
-    // }
+    {
+      profile: "./images/avatar-shanai.png",
+      name: "Shanai Gough",
+      desc: "Their software allows us to track, manage and collaborate on our projects from anywhere. It keeps the whole team in-sync without being intrusive.",
+    },
   ];
+
+  const isMd = useMediaQuery("(max-width: 768px)");
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: isMd ? 1 : 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  };
 
   return (
     <RecommendContainer>
       <RecommendTitle>What they've said</RecommendTitle>
-      <ul>
-        {recommends.map((recommend, index) => (
-          <li key={index}>
-            <RecommendItem>
-              <RecommendItemProfile src={recommend.profile} />
-              <RecommendItemTitle>{recommend.name}</RecommendItemTitle>
-              <RecommendItemDesc>{recommend.desc}</RecommendItemDesc>
-            </RecommendItem>
-          </li>
-        ))}
-      </ul>
+      <RecommendSliderContainer>
+        <Slider {...settings}>
+          {recommends.map((recommend, index) => (
+            <div key={index}>
+              <RecommendItem>
+                <RecommendItemProfile src={recommend.profile} />
+                <RecommendItemTitle>{recommend.name}</RecommendItemTitle>
+                <RecommendItemDesc>{recommend.desc}</RecommendItemDesc>
+              </RecommendItem>
+            </div>
+          ))}
+        </Slider>
+      </RecommendSliderContainer>
       <RecommendGetStartedContainer>
         <GetStarted />
       </RecommendGetStartedContainer>
