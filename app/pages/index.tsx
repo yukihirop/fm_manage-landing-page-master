@@ -3,6 +3,7 @@ import Header from "components/header";
 import Hero from "components/hero";
 import Article from "components/article";
 import { Recommend as IRecommend } from "interfaces";
+import GetStarted from "components/get-started";
 
 const Container = styled.main`
   max-width: 1140px;
@@ -55,6 +56,11 @@ const RecommendItemTitle = styled.h1`
 `;
 const RecommendItemDesc = styled.p``;
 
+const RecommendGetStartedContainer = styled.section`
+  display: flex;
+  justify-content: center;
+`
+
 export default function Home() {
   const recommends: IRecommend[] = [
     {
@@ -97,6 +103,9 @@ export default function Home() {
             </li>
           ))}
         </ul>
+        <RecommendGetStartedContainer>
+          <GetStarted />
+        </RecommendGetStartedContainer>
       </RecommendContainer>
     </Container>
   );

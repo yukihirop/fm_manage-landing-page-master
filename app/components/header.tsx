@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { md } from "styles/media-query";
+import GetStarted from "./get-started";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -112,7 +113,7 @@ const Header = () => {
       <HeaderTitle><a href="#"></a></HeaderTitle>
       <HeaderMenuDesktop />
       <HeaderMenuMobile />
-      <HeaderGettingStarted>Get Started</HeaderGettingStarted>
+      <GetStarted/>
     </HeaderContainer>
   );
 };

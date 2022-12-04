@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { md } from "styles/media-query";
+import GetStarted from "components/get-started";
 
 const HeroContainer = styled.section`
   display: flex;
@@ -84,7 +85,7 @@ const Hero = () => {
           Manage makes it simple for software teams to plan day-to-day tasks
           while keeping the larger team goals in view.
         </HeroMainDesc>
-        <HeroMainButton>Get Started</HeroMainButton>
+        <GetStarted />
       </HeroMain>
       <HeroGraph />
     </HeroContainer>
