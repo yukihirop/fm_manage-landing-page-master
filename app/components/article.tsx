@@ -1,15 +1,27 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Article as IArticle } from 'interfaces/article'
+import { Article as IArticle } from "interfaces";
+import { md } from "styles/media-query";
 
 const ArticleContainer = styled.section`
   width: 100%;
   display: flex;
   margin-top: 2rem;
+
+  ${md} {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 const ArticleMain = styled.div`
   width: 50%;
   padding: 0.5rem 0rem;
+
+  ${md} {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+  }
 `;
 const ArticleMainTitle = styled.h2`
   margin-top: 0;
@@ -21,6 +33,11 @@ const ArticleMainDesc = styled.p`
   line-height: 1.5rem;
   width: 80%;
   color: ${(props) => props.theme.colors.neutral.darkGrayishBlue};
+
+  ${md} {
+    margin: 0 auto;
+    /* width: 100%; */
+  }
 `;
 const ArticleAside = styled.aside`
   width: 50%;
@@ -34,15 +51,23 @@ const ArticleAside = styled.aside`
     flex-direction: column;
     padding: 0.5rem;
   }
+
+  ${md} {
+    width: 100%;
+  }
 `;
 const ArticleAsideItemTitleContainer = styled.section`
   display: flex;
+
+  ${md} {
+    background-color: ${(props) => props.theme.colors.neutral.veryPaleRed};
+  }
 `;
 const ArticleAsideItemIndex = styled.span`
   width: 60px;
   height: 1.6rem;
   padding: 0.3rem 0.5rem;
-  margin: 0 1rem;
+  margin-right: 1rem;
   background-color: ${(props) => props.theme.colors.primary.brightRed};
   border-radius: 20px;
   text-align: center;
