@@ -61,6 +61,11 @@ const ArticleAsideItemTitleContainer = styled.section`
 
   ${md} {
     background-color: ${(props) => props.theme.colors.neutral.veryPaleRed};
+    width: 100vw;
+    margin: 0;
+    margin-right: calc(50% - 50vw);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
   }
 `;
 const ArticleAsideItemIndex = styled.span`
@@ -86,7 +91,7 @@ const ArticleAsideItemDesc = styled.p`
   font-size: 0.8rem;
   line-height: 1.25rem;
   color: ${(props) => props.theme.colors.neutral.darkGrayishBlue};
-  margin-left: calc(60px + 2rem);
+  margin-left: calc(60px + 1rem);
 `;
 
 const Article = () => {
