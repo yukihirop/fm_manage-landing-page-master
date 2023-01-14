@@ -77,8 +77,8 @@ const HeaderMenuDesktop = () => {
   return (
     <HeaderMenuContainer>
       <ul>
-        {menus.map((menu) => (
-          <li>{menu}</li>
+        {menus.map((menu, i) => (
+          <li key={`${menu}-${i}`}>{menu}</li>
         ))}
       </ul>
     </HeaderMenuContainer>

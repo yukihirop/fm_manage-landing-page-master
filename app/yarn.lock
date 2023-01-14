@@ -728,13 +728,13 @@ __metadata:
     "@types/react-slick": ^0.23.10
     eslint: 8.28.0
     eslint-config-next: 13.0.5
+    modern-normalize: ^1.1.0
     next: 13.0.5
     react: 18.2.0
     react-dom: 18.2.0
     react-slick: ^0.29.0
     slick-carousel: ^1.8.1
     typescript: 4.9.3
-    use-mediaquery: ^1.0.1
     usehooks-ts: ^2.9.1
   languageName: unknown
   linkType: soft
@@ -2206,6 +2206,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"modern-normalize@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "modern-normalize@npm:1.1.0"
+  checksum: edfd40650bd7250eb4761651886a02ca3c524effca41b9832932eab9ccf9f2cfa7e5da8491c7c8bc2d58e1696e5e765adebeaf90cd9d3376444bd6bc0b0f2c99
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.0.0":
   version: 2.0.0
   resolution: "ms@npm:2.0.0"
@@ -3075,15 +3082,6 @@ __metadata:
   dependencies:
     punycode: ^2.1.0
   checksum: 7167432de6817fe8e9e0c9684f1d2de2bb688c94388f7569f7dbdb1587c9f4ca2a77962f134ec90be0cc4d004c939ff0d05acc9f34a0db39a3c797dada262633
-  languageName: node
-  linkType: hard
-
-"use-mediaquery@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "use-mediaquery@npm:1.0.1"
-  peerDependencies:
-    react: ^16.8.4
-  checksum: ba214ed8d8c6cb7ab63168b5ecdadcb14a3d5e99ed20fe8df2eaa77b2a1aa4ec84c4b3c22472b7dfefaf2d83e348f3700412833d9d0ff9fec028959cac2f6e02
   languageName: node
   linkType: hard
 
