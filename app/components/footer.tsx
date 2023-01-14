@@ -45,14 +45,15 @@ const FooterMenu = styled.ul`
   list-style: none;
   padding: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-direction: column;
   height: 150px;
   margin: 0;
 
+
   li {
     color: white;
-    /* margin: 0.1rem .2rem; */
+    margin-bottom: 1rem;
 
     &:hover {
       cursor: pointer;
@@ -61,17 +62,27 @@ const FooterMenu = styled.ul`
   }
 `;
 
-const FooterEmail = styled.section`
+const FooterRight = styled.section`
   height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: right;
 `;
+
+const FooterEmail = styled.section`
+  margin-top: 0px;
+`;
+
 const FooterEmailInput = styled.input`
+  width: 200px;
   height: 40px;
   border-radius: 25px;
   padding: 12.5px;
   color: ${(props) => props.theme.colors.neutral.darkGrayishBlue};
   margin-right: 0.5rem;
   border: none;
-  font-size: .8rem;
+  font-size: 0.8rem;
 
   &:focus {
     outline: 2px solid ${(props) => props.theme.colors.primary.brightRed};
@@ -90,6 +101,12 @@ const FooterEmailButton = styled.button`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const FooterCopyright = styled.p`
+  color: ${(props) => props.theme.colors.neutral.darkGrayishBlue};
+  margin-bottom: 0px;
+  font-size: .7rem;
 `;
 
 const Footer = () => {
@@ -134,10 +151,16 @@ const Footer = () => {
           </li>
         ))}
       </FooterMenu>
-      <FooterEmail>
-        <FooterEmailInput type="text" placeholder="Updates in your inbox..." />
-        <FooterEmailButton>Go</FooterEmailButton>
-      </FooterEmail>
+      <FooterRight>
+        <FooterEmail>
+          <FooterEmailInput
+            type="text"
+            placeholder="Updates in your inbox..."
+          />
+          <FooterEmailButton>Go</FooterEmailButton>
+        </FooterEmail>
+        <FooterCopyright>Copyright 2020. All Rights Reserved</FooterCopyright>
+      </FooterRight>
     </FooterContainer>
   );
 };
