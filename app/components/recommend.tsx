@@ -94,7 +94,7 @@ const Recommend = () => {
       <RecommendSliderContainer>
         <Slider {...settings}>
           {recommends.map((recommend, index) => (
-            <div key={index}>
+            <div key={`${recommend.profile}-${index}`}>
               <RecommendItem>
                 <RecommendItemProfile src={recommend.profile} />
                 <RecommendItemTitle>{recommend.name}</RecommendItemTitle>
