@@ -25,6 +25,7 @@ const Container = styled.main`
 export default function Home() {
   return (
     <>
+      {open.value && <Modal />}
       <Container>
         <Header />
         <Hero />
@@ -33,7 +34,6 @@ export default function Home() {
       </Container>
       <Banner />
       <Footer />
-      {open.value && <Modal />}
     </>
   );
 }

@@ -93,6 +93,7 @@ const HeaderMenuMobile = styled.button<HeaderMenuMobileProps>`
   display: none;
   border: none;
   background-color: transparent;
+  z-index: 999;
 
   ${md} {
     display: block;
@@ -119,7 +120,14 @@ const Header = () => {
         bgImage={
           open.value ? "./images/icon-close.svg" : "./images/icon-hamburger.svg"
         }
-        onClick={() => (open.value = !open.value)}
+        onClick={() => {
+          open.value = !open.value;
+          if (open.value) {
+            document.body.classList.add("overlay");
+          } else {
+            document.body.classList.remove("overlay");
+          }
+        }}
       />
       <HeaderGettingStarted>Get Started</HeaderGettingStarted>
     </HeaderContainer>
