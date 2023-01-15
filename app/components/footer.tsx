@@ -9,6 +9,7 @@ const FooterContainer = styled.footer`
 
   ${md} {
     height: auto;
+    position: relative;
   }
 `;
 
@@ -23,9 +24,9 @@ const FooterCenter = styled.div`
   height: 100%;
 
   ${md} {
-    position: relative;
-    height: auto;
+    row-gap: 2rem;
     flex-direction: column-reverse;
+    justify-content: space-between;
   }
 `;
 
@@ -34,15 +35,29 @@ const FooterLogoContainer = styled.section`
   flex-direction: column;
   justify-content: space-between;
   height: 150px;
-`;
-const FooterLogo = styled.h1`
   width: 150px;
+
+  ${md} {
+    height: auto;
+    width: 100%;
+    flex-direction: column-reverse;
+    margin-bottom: 4rem;
+  }
+`;
+
+const FooterLogo = styled.h1`
   height: 60px;
   color: white;
   margin-top: 0;
   background-image: url("./images/logo-footer.svg");
   background-repeat: no-repeat;
   background-position-y: calc(50% + 4px);
+
+  ${md} {
+    width: 100%;
+    margin: 0 auto;
+    background-position-x: 50%;
+  }
 `;
 const FooterLogoMenuList = styled.ul`
   width: 150px;
@@ -56,6 +71,16 @@ const FooterLogoMenuList = styled.ul`
       cursor: pointer;
     }
   }
+
+  ${md} {
+    width: 100%;
+    justify-content: space-around;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
 `;
 
 const FooterMenu = styled.section`
@@ -65,6 +90,7 @@ const FooterMenu = styled.section`
 
   ${md} {
     flex-direction: row;
+    width: 100%;
   }
 `;
 
@@ -106,6 +132,7 @@ const FooterEmail = styled.section`
 
   ${md} {
     width: 100%;
+    margin: auto;
   }
 `;
 
@@ -136,6 +163,7 @@ const FooterEmailButton = styled.button`
   color: white;
   font-style: bold;
   border: none;
+  line-height: 1;
 
   &:hover {
     cursor: pointer;
@@ -146,6 +174,14 @@ const FooterCopyright = styled.p`
   color: ${(props) => props.theme.colors.neutral.darkGrayishBlue};
   margin-bottom: 0px;
   font-size: .7rem;
+
+  ${md} {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 2rem auto;
+  }
 `;
 
 const Footer = () => {
