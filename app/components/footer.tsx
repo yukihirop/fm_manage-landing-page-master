@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { md } from 'styles/media-query'
+import { css } from "@emotion/react";
+import { md } from "styles/media-query";
 
 const FooterContainer = styled.footer`
   width: 100vw;
@@ -128,22 +129,50 @@ const FooterRight = styled.section`
 `;
 
 const FooterEmail = styled.section`
-  margin-top: 0px;
+  display: flex;
+  column-gap: 0.5rem;
+  justify-content: flex-end;
 
   ${md} {
     width: 100%;
     margin: auto;
+    justify-content: center;
   }
 `;
 
-const FooterEmailInput = styled.input`
-  min-width: 200px;
+const FooterEmailValidation = styled.p`
+  font-size: 0.7rem;
+  color: ${(props) => props.theme.colors.primary.brightRed};
+  text-align: left;
+  padding-left: 0.8rem;
+`;
+
+const FooterEmailContainer = styled.section`
+  margin-top: 0px;
+
+  ${md} {
+    width: 100%;
+  }
+`;
+
+type FooterEmailInputProps = {
+  invalid: boolean;
+};
+const FooterEmailInput = styled.input<FooterEmailInputProps>`
+  width: 100%;
+  max-width: 200px;
   height: 40px;
   border-radius: 25px;
   padding: 12.5px;
-  color: ${(props) => props.theme.colors.neutral.darkGrayishBlue};
+  color: ${(props) =>
+    props.invalid
+      ? props.theme.colors.primary.brightRed
+      : props.theme.colors.neutral.darkGrayishBlue};
   margin-right: 0.5rem;
-  border: none;
+  border: ${(props) =>
+    props.invalid
+      ? `2px solid ${props.theme.colors.primary.brightRed}`
+      : "none"};
   font-size: 0.8rem;
 
   &:focus {
@@ -151,7 +180,7 @@ const FooterEmailInput = styled.input`
   }
 
   ${md} {
-    width: 80%;
+    max-width: 100%;
   }
 `;
 const FooterEmailButton = styled.button`
@@ -168,12 +197,16 @@ const FooterEmailButton = styled.button`
   &:hover {
     cursor: pointer;
   }
+
+  ${md} {
+    width: 100px;
+  }
 `;
 
 const FooterCopyright = styled.p`
   color: ${(props) => props.theme.colors.neutral.darkGrayishBlue};
   margin-bottom: 0px;
-  font-size: .7rem;
+  font-size: 0.7rem;
 
   ${md} {
     position: absolute;
@@ -183,6 +216,33 @@ const FooterCopyright = styled.p`
     margin: 2rem auto;
   }
 `;
+
+const EMAIL_FORMAT = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+
+type EmailHooks = {
+  email: string;
+  invalid: boolean;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+};
+
+const useEmail = (): EmailHooks => {
+  const [email, setEmail] = useState("");
+  const [invalid, setInvalid] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
+    e.preventDefault();
+    setInvalid(!EMAIL_FORMAT.test(email));
+  };
+
+  return { email, invalid, handleChange, handleClick };
+};
 
 const Footer = () => {
   const snsList = [
@@ -196,6 +256,8 @@ const Footer = () => {
   const footerMenuList1 = ["Home", "Pricing", "Products", "About Us"];
 
   const footerMenuList2 = ["Careers", "Community", "Privacy Policy"];
+
+  const { email, invalid, handleChange, handleClick } = useEmail();
 
   return (
     <FooterContainer>
@@ -231,11 +293,21 @@ const Footer = () => {
         </FooterMenu>
         <FooterRight>
           <FooterEmail>
-            <FooterEmailInput
-              type="text"
-              placeholder="Updates in your inbox..."
-            />
-            <FooterEmailButton>Go</FooterEmailButton>
+            <FooterEmailContainer>
+              <FooterEmailInput
+                type="text"
+                placeholder="Updates in your inbox..."
+                value={email}
+                onChange={handleChange}
+                invalid={invalid}
+              />
+              {invalid && (
+                <FooterEmailValidation>
+                  Please insert a valid email
+                </FooterEmailValidation>
+              )}
+            </FooterEmailContainer>
+            <FooterEmailButton onClick={handleClick}>Go</FooterEmailButton>
           </FooterEmail>
           <FooterCopyright>Copyright 2020. All Rights Reserved</FooterCopyright>
         </FooterRight>
