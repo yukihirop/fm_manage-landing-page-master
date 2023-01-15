@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 import { md } from "styles/media-query";
+import { open } from "signals";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -108,8 +109,6 @@ const HeaderMenuMobile = styled.button<HeaderMenuMobileProps>`
 `;
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
-
   return (
     <HeaderContainer>
       <HeaderTitle>
@@ -118,9 +117,9 @@ const Header = () => {
       <HeaderMenuDesktop />
       <HeaderMenuMobile
         bgImage={
-          open ? "./images/icon-close.svg" : "./images/icon-hamburger.svg"
+          open.value ? "./images/icon-close.svg" : "./images/icon-hamburger.svg"
         }
-        onClick={() => setOpen(!open)}
+        onClick={() => (open.value = !open.value)}
       />
       <HeaderGettingStarted>Get Started</HeaderGettingStarted>
     </HeaderContainer>

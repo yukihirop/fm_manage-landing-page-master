@@ -515,6 +515,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@preact/signals-core@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "@preact/signals-core@npm:1.2.3"
+  checksum: 21f42dfbdbc49be8da361e8adbfc93647dbbd18f952a1ef4dec7821ee9c3c6e9f095386c795878188781fb2102b9feb1a8243f739946e992965414877406185d
+  languageName: node
+  linkType: hard
+
+"@preact/signals-react@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@preact/signals-react@npm:1.2.2"
+  dependencies:
+    "@preact/signals-core": ^1.2.3
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: 17.x || 18.x
+  checksum: 46184a68ab7d2e93abccd7aa43c7f72af9fb98099b7ec7ca9eb266d08d7937b055a58f18c03ef70fa25019016b042b9534216ad38a388c24321d4e947b8e0636
+  languageName: node
+  linkType: hard
+
 "@rushstack/eslint-patch@npm:^1.1.3":
   version: 1.2.0
   resolution: "@rushstack/eslint-patch@npm:1.2.0"
@@ -722,6 +741,7 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     "@next/font": ^13.0.5
+    "@preact/signals-react": ^1.2.2
     "@types/node": 18.11.9
     "@types/react": 18.0.25
     "@types/react-dom": 18.0.9
@@ -3082,6 +3102,15 @@ __metadata:
   dependencies:
     punycode: ^2.1.0
   checksum: 7167432de6817fe8e9e0c9684f1d2de2bb688c94388f7569f7dbdb1587c9f4ca2a77962f134ec90be0cc4d004c939ff0d05acc9f34a0db39a3c797dada262633
+  languageName: node
+  linkType: hard
+
+"use-sync-external-store@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "use-sync-external-store@npm:1.2.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 5c639e0f8da3521d605f59ce5be9e094ca772bd44a4ce7322b055a6f58eeed8dda3c94cabd90c7a41fb6fa852210092008afe48f7038792fd47501f33299116a
   languageName: node
   linkType: hard
 
