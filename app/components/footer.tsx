@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
 import { md } from "styles/media-query";
+import Image from "next/image";
+import { useMediaQuery } from "usehooks-ts";
 
 const FooterContainer = styled.footer`
   width: 100vw;
@@ -76,11 +77,6 @@ const FooterLogoMenuList = styled.ul`
   ${md} {
     width: 100%;
     justify-content: space-around;
-
-    img {
-      width: 30px;
-      height: 30px;
-    }
   }
 `;
 
@@ -258,6 +254,10 @@ const Footer = () => {
   const footerMenuList2 = ["Careers", "Community", "Privacy Policy"];
 
   const { email, invalid, handleChange, handleClick } = useEmail();
+  const isMd = useMediaQuery("(max-width: 768px)");
+  const baseURL = process.env.NEXT_PUBLIC_VERCEL_URL
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+    : "http://localhost:3000";
 
   return (
     <FooterContainer>
@@ -267,7 +267,12 @@ const Footer = () => {
           <FooterLogoMenuList>
             {snsList.map((sns, i) => (
               <li key={`${sns}-${i}`}>
-                <img src={`./images/${sns}`} alt="sns" />
+                <Image
+                  src={`${baseURL}/images/${sns}`}
+                  alt="sns"
+                  width={isMd ? 30 : 20}
+                  height={isMd ? 30 : 20}
+                />
                 <a href="#" />
               </li>
             ))}

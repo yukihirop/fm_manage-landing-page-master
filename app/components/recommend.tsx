@@ -90,7 +90,7 @@ const Recommend = () => {
 
   return (
     <RecommendContainer>
-      <RecommendTitle>What they've said</RecommendTitle>
+      <RecommendTitle>What they&apos;ve said</RecommendTitle>
       <RecommendSliderContainer>
         <Slider {...settings}>
           {recommends.map((recommend, index) => (

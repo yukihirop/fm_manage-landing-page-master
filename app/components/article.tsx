@@ -113,7 +113,7 @@ const Article = () => {
   return (
     <ArticleContainer>
       <ArticleMain>
-        <ArticleMainTitle>What's different about Manage?</ArticleMainTitle>
+        <ArticleMainTitle>What&apos;s different about Manage?</ArticleMainTitle>
         <ArticleMainDesc>
           Manage provides all the functionality your team needs, without the
           complexity. Our software is tailor-made for modern digital product
