@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { md } from "styles/media-query";
 
@@ -27,7 +27,7 @@ const HeaderTitle = styled.h1`
 `;
 
 const HeaderMenuContainer = styled.nav`
-font-size: .5rem;
+  font-size: 0.5rem;
 
   ul {
     display: flex;
@@ -38,7 +38,7 @@ font-size: .5rem;
 
   li {
     width: 90px;
-    margin-right: .25rem;
+    margin-right: 0.25rem;
 
     &:hover {
       cursor: pointer;
@@ -85,7 +85,10 @@ const HeaderMenuDesktop = () => {
   );
 };
 
-const HeaderMenuMobile = styled.button`
+type HeaderMenuMobileProps = {
+  bgImage: string;
+};
+const HeaderMenuMobile = styled.button<HeaderMenuMobileProps>`
   display: none;
   border: none;
   background-color: transparent;
@@ -94,7 +97,7 @@ const HeaderMenuMobile = styled.button`
     display: block;
     width: 40px;
     height: 40px;
-    background-image: url("./images/icon-hamburger.svg");
+    background-image: url(${(props) => props.bgImage});
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -105,13 +108,20 @@ const HeaderMenuMobile = styled.button`
 `;
 
 const Header = () => {
-  const menus = ["Pricing", "Product", "About Us", "Careers", "Community"];
+  const [open, setOpen] = useState(false);
 
   return (
     <HeaderContainer>
-      <HeaderTitle><a href="#"></a></HeaderTitle>
+      <HeaderTitle>
+        <a href="#"></a>
+      </HeaderTitle>
       <HeaderMenuDesktop />
-      <HeaderMenuMobile />
+      <HeaderMenuMobile
+        bgImage={
+          open ? "./images/icon-close.svg" : "./images/icon-hamburger.svg"
+        }
+        onClick={() => setOpen(!open)}
+      />
       <HeaderGettingStarted>Get Started</HeaderGettingStarted>
     </HeaderContainer>
   );
